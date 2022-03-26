@@ -1,4 +1,4 @@
-package com.example.lab02.ui.dashboard;
+package com.example.lab02.ui.bmi;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,11 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import com.example.lab02.databinding.FragmentDashboardBinding;
-
+import com.example.lab02.databinding.FragmentBmiBinding;
 import java.text.NumberFormat;
 
-public class DashboardFragment extends Fragment {
+public class BmiFragment extends Fragment {
 
     // number formatter
     private static final NumberFormat numberFormat =
@@ -27,17 +26,17 @@ public class DashboardFragment extends Fragment {
     private TextView heightTextView; // shows formatted height
     private TextView bmiTextView; // shows calculated BMI
 
-    private FragmentDashboardBinding binding;
+    private FragmentBmiBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        BmiViewModel bmiViewModel =
+                new ViewModelProvider(this).get(BmiViewModel.class);
 
-    binding = FragmentDashboardBinding.inflate(inflater, container, false);
+    binding = FragmentBmiBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
+        final TextView textView = binding.textBmi;
         weightTextView = binding.weightTextView;
         heightTextView = binding.heightTextView;
         bmiTextView = binding.bmiTextView;
@@ -49,7 +48,7 @@ public class DashboardFragment extends Fragment {
         final EditText heightEditText = binding.heightEditText;
         heightEditText.addTextChangedListener(heightEditTextWatcher);
 
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        bmiViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
@@ -91,7 +90,7 @@ public class DashboardFragment extends Fragment {
                 CharSequence s, int start, int count, int after) { }
     };
 
-    // listener object for the height EditText's text-changed events
+    // listener object for the EditText's text-changed events
     private final TextWatcher heightEditTextWatcher = new TextWatcher() {
         // called when the user modifies the height
         @Override

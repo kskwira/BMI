@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">LAB02</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_BMI">BMI</string>
+    <string name="title_calories">Calories</string>
+    <string name="title_recipe">Recipe</string>
     <string name="enter_height">Enter height</string>
     <string name="enter_weight">Enter weight</string>
-    <string name="bmi">BMI</string>
+    <string name="output_bmi">BMI</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
