@@ -7,6 +7,44 @@
     <string name="enter_height">Enter height</string>
     <string name="enter_weight">Enter weight</string>
     <string name="output_bmi">BMI</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_recipe_title">Recipe 1 - Veggie yaki udon</string>
+    <string name="first_recipe_body">
+        Ingredients:\n
+        1½ tbsp sesame oil\n
+        1 red onion, cut into thin wedges\n
+        160g mangetout\n
+        70g baby corn, halved\n
+        2 baby pak choi, quartered\n
+        3 spring onions, sliced\n
+        1 large garlic clove, crushed\n
+        ½ tbsp mild curry powder\n
+        4 tsp low-salt soy sauce\n
+        300g ready-to-cook udon noodles\n
+        1 tbsp pickled sushi ginger, chopped, plus 2 tbsp of the brine\n\n
+        STEP 1\n
+        Heat the oil in a non-stick frying pan or wok over a high heat. Add the onion and fry for 5 mins. Stir in the mangetout, corn, pak choi and spring onions and cook for 5 mins more. Add the garlic, curry powder and soy sauce, and cook for another minute.\n
+        STEP 2\n
+        Add the udon noodles along with the ginger and reserved brine, and stir in 2-3 tbsp hot water until the noodles are heated through. Divide between bowls and serve.
+    </string>
+    <string name="second_recipe_title">Recipe 2 - Prawn and salmon burgers with spicy mayo</string>
+    <string name="second_recipe_body">
+        Ingredients:\n
+        180g pack peeled raw prawns, roughly chopped\n
+        4 skinless salmon fillets, chopped into small chunks\n
+        3 spring onions, roughly chopped\n
+        1 lemon, zested and juiced\n
+        small pack coriander\n
+        60g mayonnaise or Greek yogurt\n
+        4 tsp chilli sauce (we used sriracha)\n
+        2 Little Gem lettuces, shredded\n
+        1 cucumber, peeled into ribbons\n
+        1 tbsp olive oil\n
+        4 seeded burger buns, toasted, to serve\n\n
+        STEP 1\n
+        Briefly blitz half the prawns, half the salmon, the spring onions, lemon zest and half the coriander in a food processor until it forms a coarse paste. Tip into a bowl, stir in the rest of the prawns and salmon, season well and shape into four burgers. Chill for 10 mins.\n
+        STEP 2\n
+        Mix the mayo and chilli sauce together in a small bowl, season and add some lemon juice to taste. Mix the lettuce with the cucumber, dress with a little of the remaining lemon juice and 1 tsp olive oil, then set aside.\n
+        STEP 3\n
+        Heat the remaining oil in a large frying pan and fry the burgers for 3-4 mins each side or until they have a nice crust and the fish is cooked through. Serve with the salad on the side or in toasted burger buns, if you like, with a good dollop of the spicy mayo.
+    </string>
 </resources>
