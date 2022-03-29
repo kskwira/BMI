@@ -75,7 +75,7 @@
             android:layout_gravity="fill_horizontal"
             android:background="@color/amount_background"
             android:elevation="@dimen/elevation"
-            android:hint="@string/enter_height"
+            android:hint="@string/enter_height_bmi"
             android:padding="@dimen/textview_padding"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColorHint="#455A64" />

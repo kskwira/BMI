@@ -4,9 +4,14 @@
     <string name="title_BMI">BMI</string>
     <string name="title_calories">Calories</string>
     <string name="title_recipe">Recipe</string>
-    <string name="enter_height">Enter height</string>
-    <string name="enter_weight">Enter weight</string>
+    <string name="enter_height">Enter height in cm</string>
+    <string name="enter_height_bmi">Enter height in m</string>
+    <string name="enter_weight">Enter weight in kg</string>
+    <string name="enter_age">Enter age</string>
+    <string name="male_radio_button">Male</string>
+    <string name="female_radio_button">Female</string>
     <string name="output_bmi">BMI</string>
+    <string name="output_bmr">BMR</string>
     <string name="first_recipe_title">Recipe 1 - Veggie yaki udon</string>
     <string name="first_recipe_body">
         Ingredients:\n
