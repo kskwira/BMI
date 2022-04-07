@@ -21,4 +21,9 @@
         android:icon="@drawable/ic_baseline_menu_book_24"
         android:title="@string/title_recipe"/>
 
+    <item
+        android:id="@+id/navigation_quiz"
+        android:icon="@drawable/ic_baseline_quiz_outline_24"
+        android:title="@string/title_quiz"/>
+
 </menu>

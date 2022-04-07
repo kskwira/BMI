@@ -5,4 +5,7 @@
     <dimen name="textview_padding">12dp</dimen>
     <dimen name="elevation">4dp</dimen>
     <dimen name="seekbar_height">40dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="spacing">8dp</dimen>
+    <dimen name="answer_size">28sp</dimen>
 </resources>
