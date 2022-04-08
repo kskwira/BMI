@@ -3,9 +3,11 @@ package com.example.lab03.ui.bmi;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -25,6 +27,45 @@ public class BmiFragment extends Fragment {
     private TextView weightTextView; // shows formatted weight
     private TextView heightTextView; // shows formatted height
     private TextView bmiTextView; // shows calculated BMI
+    private WebView bmiWebView; // BMI WebView Chart
+    private final String unEncodedHtml =
+            "  <html>\n" +
+                    "  <head>\n" +
+                    "    <script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script>\n" +
+                    "    <script type=\"text/javascript\">\n" +
+                    "      google.charts.load('current', {'packages':['corechart']});\n" +
+                    "      google.charts.setOnLoadCallback(drawChart);\n" +
+                    "\n" +
+                    "      function drawChart() {\n" +
+                    "        var data = google.visualization.arrayToDataTable([\n" +
+                    "          ['Month',    'Target BMI', 'Your BMI'],\n" +
+                    "          ['October',   24.34,        25.02],\n" +
+                    "          ['November',  24.34,        24.87],\n" +
+                    "          ['December',  24.34,        24.90],\n" +
+                    "          ['January',   24.34,        24.66],\n" +
+                    "          ['February',  24.34,        24.46],\n" +
+                    "          ['March',     24.34,        24.40]\n" +
+                    "        ]);\n" +
+                    "\n" +
+                    "        var options = {\n" +
+                    "          title: 'BMI over last 6 months',\n" +
+                    "          curveType: 'function',\n" +
+                    "          legend: { position: 'bottom' }\n" +
+                    "        };\n" +
+                    "\n" +
+                    "        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));\n" +
+                    "\n" +
+                    "        chart.draw(data, options);\n" +
+                    "      }\n" +
+                    "    </script>\n" +
+                    "  </head>\n" +
+                    "  <body>\n" +
+                    "    <div id=\"curve_chart\" style=\"width: 420px; height: 250px\"></div>\n" +
+                    "  </body>\n" +
+                    "</html>\n" +
+                    "\n";
+
+    private final String encodedHtml = Base64.encodeToString(unEncodedHtml.getBytes(), Base64.NO_PADDING);
 
     private FragmentBmiBinding binding;
 
@@ -36,11 +77,14 @@ public class BmiFragment extends Fragment {
         binding = FragmentBmiBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textBmi;
         weightTextView = binding.weightTextView;
         heightTextView = binding.heightTextView;
         bmiTextView = binding.bmiTextView;
+        bmiWebView = binding.bmiWebView;
         bmiTextView.setText(numberFormat.format(0));
+
+        bmiWebView.getSettings().setJavaScriptEnabled(true);
+        bmiWebView.loadData(encodedHtml, "text/html", "base64");
 
         final EditText weightEditText = binding.weightEditText;
         weightEditText.addTextChangedListener(weightEditTextWatcher);
@@ -48,7 +92,6 @@ public class BmiFragment extends Fragment {
         final EditText heightEditText = binding.heightEditText;
         heightEditText.addTextChangedListener(heightEditTextWatcher);
 
-        bmiViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
