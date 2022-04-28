@@ -12,14 +12,27 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_bmi"
         android:name="com.example.lab04.ui.bmi.BmiFragment"
         android:label="@string/title_bmi"
         tools:layout="@layout/fragment_bmi" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_calories"
+        android:name="com.example.lab04.ui.calories.CaloriesFragment"
+        android:label="@string/title_calories"
+        tools:layout="@layout/fragment_calories" />
+
+    <fragment
+        android:id="@+id/navigation_recipe"
         android:name="com.example.lab04.ui.recipe.RecipeFragment"
         android:label="@string/title_recipe"
         tools:layout="@layout/fragment_recipe" />
+
+    <fragment
+        android:id="@+id/navigation_quiz"
+        android:name="com.example.lab04.ui.quiz.QuizFragment"
+        android:label="@string/title_quiz"
+        tools:layout="@layout/fragment_quiz" />
+
 </navigation>

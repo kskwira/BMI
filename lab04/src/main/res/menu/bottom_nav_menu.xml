@@ -7,13 +7,23 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:id="@+id/navigation_bmi"
+        android:icon="@drawable/ic_baseline_directions_run_24"
         android:title="@string/title_bmi" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:id="@+id/navigation_calories"
+        android:icon="@drawable/ic_baseline_fastfood_24"
+        android:title="@string/title_calories" />
+
+    <item
+        android:id="@+id/navigation_recipe"
+        android:icon="@drawable/ic_baseline_menu_book_24"
         android:title="@string/title_recipe" />
+
+    <item
+        android:id="@+id/navigation_quiz"
+        android:icon="@drawable/ic_baseline_quiz_outline_24"
+        android:title="@string/title_quiz" />
 
 </menu>

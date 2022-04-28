@@ -22,16 +22,16 @@ class RecipeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-                ViewModelProvider(this).get(RecipeViewModel::class.java)
+        val recipeViewModel =
+            ViewModelProvider(this)[RecipeViewModel::class.java]
 
         _binding = FragmentRecipeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textRecipe
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textRecipe
+//        recipeViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 
