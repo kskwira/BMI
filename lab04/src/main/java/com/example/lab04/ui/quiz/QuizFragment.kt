@@ -2,6 +2,7 @@ package com.example.lab04.ui.quiz
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.app.AlertDialog
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
@@ -21,7 +22,6 @@ import com.example.lab04.R
 import com.example.lab04.databinding.FragmentQuizBinding
 import java.io.IOException
 import java.security.SecureRandom
-import java.util.*
 import kotlin.math.max
 
 class QuizFragment : Fragment() {
@@ -35,10 +35,10 @@ class QuizFragment : Fragment() {
 
     private lateinit var fileNameList : ArrayList<String> // flag file names
     private lateinit var quizCountriesList : ArrayList<String>
-    private val regionsSet : Set<String>? = null // world regions in current quiz
+    private val regionsSet : Set<String> = setOf("Africa", "Asia","Europe", "North_America", "Oceania", "South_America") // world regions in current quiz
     private lateinit var correctAnswer : String // correct country for the current flag
-    var totalGuesses = 0 // number of guesses made
-    var correctAnswers = 0 // number of correct guesses
+    private var totalGuesses = 0 // number of guesses made
+    private var correctAnswers = 0 // number of correct guesses
     private var guessRows = 0 // number of rows displaying guess Buttons
     private var random : SecureRandom? = null // used to randomize the quiz
     private var handler : Handler? = null // used to delay loading next flag
@@ -70,7 +70,6 @@ class QuizFragment : Fragment() {
         )
         shakeAnimation.repeatCount = 3 // animation repeats 3 times
 
-
         quizLinearLayout = binding.quizLinearLayout
         questionNumberTextView = binding.questionNumberTextView
         flagImageView = binding.flagImageView
@@ -79,10 +78,6 @@ class QuizFragment : Fragment() {
         guessLinearLayouts[1] = binding.row2LinearLayout
         guessLinearLayouts[2] = binding.row3LinearLayout
         answerTextView = binding.answerTextView
-
-
-//        regionsSet.add("North_America");
-//        regionsSet.add("Europe");
 
         // set the number of possible answer rows - value between 1 and 3
         guessRows = 2
@@ -116,20 +111,12 @@ class QuizFragment : Fragment() {
         val assets = requireActivity().assets
         fileNameList.clear() // empty list of image file names
         try {
-
-//            // loop through each region
-//            for (String region : regionsSet) {
-//                // get a list of all flag image files in this region
-//                String[] paths = assets.list(region);
-//
-//                for (String path : paths)
-//                    fileNameList.add(path.replace(".png", ""));
-
-            // Set the region
-            val paths = assets.list("Europe")
-
-            // get a list of all flag image files in this region
-            for (path in paths!!) fileNameList.add(path.replace(".png", ""))
+            // loop through each region
+            for (region in regionsSet) {
+                // get a list of all flag image files in this region
+                val paths = assets.list(region)
+                for (path in paths!!) fileNameList.add(path.replace(".png", ""))
+            }
         } catch (exception: IOException) {
             Log.e(
                 TAG,
@@ -291,41 +278,26 @@ class QuizFragment : Fragment() {
 
                 // if the user has correctly identified FLAGS_IN_QUIZ flags
                 if (correctAnswers == flagsInQuiz) {
-                    // DialogFragment to display quiz stats and start new quiz
-                    //                    DialogFragment quizResults =
-                    //                            new DialogFragment() {
-                    //                                // create an AlertDialog and return it
-                    //                                @NonNull
-                    //                                @Override
-                    //                                public Dialog onCreateDialog(Bundle bundle) {
-                    //                                    AlertDialog.Builder builder =
-                    //                                            new AlertDialog.Builder(getActivity());
-                    //                                    builder.setMessage(
-                    //                                            getString(R.string.results,
-                    //                                                    totalGuesses,
-                    //                                                    (1000 / (double) totalGuesses)));
-                    //
-                    //                                    // "Reset Quiz" Button
-                    //                                    builder.setPositiveButton(R.string.reset_quiz,
-                    //                                            new DialogInterface.OnClickListener() {
-                    //                                                public void onClick(DialogInterface dialog,
-                    //                                                                    int id) {
-                    //                                                    resetQuiz();
-                    //                                                }
-                    //                                            }
-                    //                                    );
-                    //
-                    //                                    return builder.create(); // return the AlertDialog
-                    //                                }
-                    //                            };
-                    //
-                    //                    // use FragmentManager to display the DialogFragment
-                    //                    quizResults.setCancelable(false);
-                    //                    quizResults.show(getFragmentManager(), "quiz results");
+                    // AlertDialog to display quiz stats and start new quiz
+                    val alertDialogBuilder = AlertDialog.Builder(activity)
+                    alertDialogBuilder.setMessage(
+                        getString(
+                            R.string.results,
+                            totalGuesses,
+                            1000 / totalGuesses.toDouble()
+                        )
+                    )
+                        .setPositiveButton(R.string.reset_quiz
+                        ) { _, _ -> resetQuiz() }
+                        .setTitle("quiz results")
 
+                    val alertDialog : AlertDialog = alertDialogBuilder.create()
+                    alertDialog.show()
 
-                    MyCustomDialog()
-                        .show(childFragmentManager, MyCustomDialog.TAG)
+                    // optional CustomDialog, can be substituted for the above AlertDialog
+//                    MyCustomDialog()
+//                        .show(childFragmentManager, MyCustomDialog.TAG)
+
                 } else { // answer is correct but quiz is not over
                     // load the next flag after a 2-second delay
                     handler!!.postDelayed(
